@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Unit from "./Components/Unit/Unit";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // Doashboard Content Container
+    <div className="flex justify-center items-center m-5 flex-col">
+      {/* Unit Component */}
+      <Unit
+        UnitName="Unit 1"
+        UnitDescription="Basics of the German Language!"
+      />
+      <Unit UnitName="Unit 2" UnitDescription="Animal Names in German!" />
+      <Unit UnitName="Unit 3" UnitDescription="Friends, Food, and Fun!" />
+      <Unit UnitName="Unit 4" UnitDescription="Love, Life, and Laughter!" />
     </div>
   );
 }
