@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as UnitIcon } from "../../assets/Maps/de-arena.svg";
 // import MapPointer from "../../assets/Maps/map_pointer.png";
 
-const MapPointer = "https://imgur.com/8YgYUPR";
+const MapPointer = "https://i.imgur.com/8YgYUPR.png";
 
 interface IUnitProps {
   UnitName: string;
