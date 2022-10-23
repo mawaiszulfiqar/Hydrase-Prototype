@@ -1,8 +1,6 @@
 import React from "react";
 import { ReactComponent as UnitIcon } from "../../assets/Maps/de-arena.svg";
-// import MapPointer from "../../assets/Maps/map_pointer.png";
-
-const MapPointer = "https://i.imgur.com/8YgYUPR.png";
+import MapPointer from "../../assets/Maps/map_pointer.png";
 
 interface IUnitProps {
   UnitName: string;
@@ -78,7 +76,8 @@ const Level = ({ levelData }: ILevelProps) => {
       {levelData.map((level) => (
         <div
           key={level.id}
-          className={`w-full flex select-none justify-center absolute top-[${level.top}] left-[${level.left}]`}
+          className="w-full flex select-none justify-center absolute"
+          style={{ top: level.top, left: level.left }}
         >
           <div className="absolute text-white font-extrabold text-2xl top-[-10px] drop-shadow-xl group cursor-pointer group">
             {level.id}
