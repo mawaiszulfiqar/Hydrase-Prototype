@@ -98,14 +98,16 @@ const Level = ({ levelData }: ILevelProps) => {
 
 const Unit = ({ UnitName, UnitDescription }: IUnitProps) => {
   return (
-    <div className="flex flex-wrap overflow-hidden">
+    <div className="flex flex-wrap overflow-hidden mt-8">
       <div className="w-full md:w-[576px] overflow-hidden">
-        <h2 className="text-yellow-400 font-bold text-center">{UnitName}</h2>
-        <p className="text-yellow-400 font-bold text-center">
-          {UnitDescription}
-        </p>
+        <div className="bg-green-700 font-bold p-4 rounded-lg mb-[-28px] border-2 border-white">
+          <h2 className="text-white font-bold text-center">{UnitName}</h2>
+          <p className="text-white font-bold text-center mb-6">
+            {UnitDescription}
+          </p>
+        </div>
         <div className="w-full md:w-[576px] min-w-[300px] relative">
-          <UnitIcon className="w-full h-full rounded-3xl" />
+          <UnitIcon className="w-full h-full rounded-md border-l-2 border-b-2 border-r-2 border-white border-t-black border-t" />
           <Level levelData={DE_ARENA_PATHS} />
         </div>
       </div>
