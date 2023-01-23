@@ -6,7 +6,6 @@ import { io } from "socket.io-client";
 export const socket = io("ws://localhost:9999");
 
 function App() {
-  const signedIn = false;
   return (
     <Routes>
       <Route path="/" element={<Learn />} />
