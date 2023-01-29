@@ -3,13 +3,17 @@ import { BsBook } from "react-icons/bs";
 import LevelButton from "../LevelButton/LevelButton";
 
 import { CACTUS_VALLEY_PATH } from "../../utils/MapPaths/CactusValley";
+import useUser from "../../hooks/useUser";
 
 interface IUnitProps {
+  UnitId: string;
   UnitName: string;
   UnitDescription: string;
 }
 
-const Unit = ({ UnitName, UnitDescription }: IUnitProps) => {
+const Unit = ({ UnitId, UnitName, UnitDescription }: IUnitProps) => {
+  const { currentlyLearning } = useUser();
+
   return (
     <div className="flex flex-wrap overflow-hidden mt-10 first:mt-0">
       <div className="w-full md:w-[576px] overflow-hidden">
@@ -29,7 +33,9 @@ const Unit = ({ UnitName, UnitDescription }: IUnitProps) => {
         </div>
         <div className="w-full md:w-[576px] min-w-[300px] relative">
           <UnitIcon className="w-full h-full rounded-md border-l-2 border-b-2 border-r-2 border-[#2F2F2F] border-t-black border-t" />
-          <LevelButton levelData={CACTUS_VALLEY_PATH} />
+          <LevelButton
+            levelData={CACTUS_VALLEY_PATH("en", currentlyLearning, UnitId)}
+          />
         </div>
       </div>
     </div>
