@@ -3,7 +3,7 @@ import { BsBook } from "react-icons/bs";
 import LevelButton from "../LevelButton/LevelButton";
 
 import { CACTUS_VALLEY_PATH } from "../../utils/MapPaths/CactusValley";
-import useUser from "../../hooks/useUser";
+import useUser from "../../hooks/useUserInfo";
 
 interface IUnitProps {
   UnitId: string;
@@ -12,7 +12,8 @@ interface IUnitProps {
 }
 
 const Unit = ({ UnitId, UnitName, UnitDescription }: IUnitProps) => {
-  const { currentlyLearning } = useUser();
+  // const { currentlyLearning } = useUser();
+  const currentlyLearning = "de";
 
   return (
     <div className="flex flex-wrap overflow-hidden mt-10 first:mt-0">

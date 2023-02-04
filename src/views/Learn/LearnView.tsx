@@ -1,10 +1,20 @@
+import Cookies from "js-cookie";
 import React from "react";
 import { MdOutlineLeaderboard } from "react-icons/md";
 import { useNavigate } from "react-router";
 import Unit from "../../components/Unit/Unit";
+import useUserInfo from "../../hooks/useUserInfo";
 
 const LearnView = () => {
   const navigate = useNavigate();
+
+  const { username, email, isPremium, setUsername, setEmail } = useUserInfo();
+
+  const handleSignOut = () => {
+    Cookies.remove("access_token");
+    setUsername("");
+    setEmail("");
+  };
 
   return (
     <div className="py-6 md:py-8">
@@ -13,6 +23,17 @@ const LearnView = () => {
           <div className="relative w-full lg:flex-grow-0 lg:flex-shrink-0 lg:basis-2/3 lg:max-w-[66.6666666667%] px-3">
             <div className="flex justify-center items-center mx-5 flex-col">
               {/* Unit Component */}
+              <p className="font-bold text-2xl text-black">{username}</p>
+              <p className="font-bold text-2xl text-black">{email}</p>
+              <p className="font-bold text-2xl text-purple-700">
+                {isPremium ? "PREMIUM USER" : "NON PREMIUM USER"}
+              </p>
+              <button
+                className="inline-block flex-none px-4 py-3 border-2 rounded-lg font-medium border-black bg-black text-white"
+                onClick={handleSignOut}
+              >
+                Sign Out
+              </button>
               <Unit
                 UnitId="1"
                 UnitName="Unit 1"
@@ -78,56 +99,58 @@ const LearnView = () => {
                 </span>
               </div>
             </div>
-            <div className="break-inside relative overflow-hidden flex flex-col shadow-md justify-between space-y-3 text-sm rounded-xl max-w-[23rem] p-4 mb-4 bg-white text-black dark:bg-slate-800 dark:text-white">
-              <div className="flex items-center justify-between font-medium">
-                <span className="uppercase font-bold text-sm text-[#FFE85C]">
-                  Hydrase Premium
-                </span>
-                <div className="flex justify-between items-center">
-                  <button className="flex items-center justify-center text-xs font-bold rounded-full px-4 py-1 space-x-1 border-2 bg-transparent border-white bg-white text-white hover:scale-105 transition-all duration-100">
-                    <span>Try Now!</span>
+            {!isPremium ? (
+              <div className="break-inside relative overflow-hidden flex flex-col shadow-md justify-between space-y-3 text-sm rounded-xl max-w-[23rem] p-4 mb-4 bg-white text-black dark:bg-slate-800 dark:text-white">
+                <div className="flex items-center justify-between font-medium">
+                  <span className="uppercase font-bold text-sm text-[#FFE85C]">
+                    Hydrase Premium
+                  </span>
+                  <div className="flex justify-between items-center">
+                    <button className="flex items-center justify-center text-xs font-bold rounded-full px-4 py-1 space-x-1 border-2 bg-transparent border-white bg-white text-white hover:scale-105 transition-all duration-100">
+                      <span>Try Now!</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h13M12 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div className="flex flex-row items-center space-x-3">
+                  <div className="flex flex-none items-center justify-center w-10 h-10 rounded-full bg-[#FFE85C] text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="15"
-                      height="15"
+                      width="20"
+                      height="20"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="white"
+                      stroke="black"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
-                      <path d="M5 12h13M12 5l7 7-7 7" />
+                      <polygon points="14 2 18 6 7 17 3 17 3 13 14 2" />
+                      <line x1="3" y1="22" x2="21" y2="22" />
                     </svg>
-                  </button>
+                  </div>
+                  <span className="text-base font-medium">
+                    Reach your language goals!
+                  </span>
+                </div>
+                <div className="text-left font-bold">
+                  Upgrade to premium and unlock access to advanced language
+                  courses, personalized learning plans.
                 </div>
               </div>
-              <div className="flex flex-row items-center space-x-3">
-                <div className="flex flex-none items-center justify-center w-10 h-10 rounded-full bg-[#FFE85C] text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="black"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polygon points="14 2 18 6 7 17 3 17 3 13 14 2" />
-                    <line x1="3" y1="22" x2="21" y2="22" />
-                  </svg>
-                </div>
-                <span className="text-base font-medium">
-                  Reach your language goals!
-                </span>
-              </div>
-              <div className="text-left font-bold">
-                Upgrade to premium and unlock access to advanced language
-                courses, personalized learning plans.
-              </div>
-            </div>
+            ) : null}
           </div>
         </div>
       </div>

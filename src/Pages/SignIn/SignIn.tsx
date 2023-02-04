@@ -1,9 +1,41 @@
-import React from "react";
+import Cookies from "js-cookie";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { ReactComponent as HydraseLogo } from "../../assets/Graphics/hydrase-logo.svg";
+import useUserInfo from "../../hooks/useUserInfo";
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const [inputUsername, setInputUsername] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+
+  const { setUsername, setEmail } = useUserInfo();
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (!inputUsername || !inputPassword) return;
+
+    fetch("http://localhost:9999/api/auth/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        password: inputPassword.toString().toLowerCase(),
+        username: inputUsername.toString().toLowerCase(),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUsername(data.username);
+        setEmail(data.email);
+
+        return data.status;
+      })
+      .then((status) => status === "success" && navigate("/"));
+  };
+
   return (
     <div className="flex min-h-screen">
       <div className="flex flex-row w-full">
@@ -29,7 +61,6 @@ const SignIn = () => {
               <HydraseLogo className="w-10 h-10" />
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-base font-bold mr-4">Not a member ?</span>
               <button className="inline-block flex-none px-4 py-3 border-2 rounded-lg font-medium border-black bg-black text-white">
                 Create an account
               </button>
@@ -47,15 +78,21 @@ const SignIn = () => {
                 type="text"
                 placeholder="Username"
                 className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                onChange={(e) => {
+                  setInputUsername(e.target.value);
+                }}
               />
               <input
                 type="password"
                 placeholder="Password"
                 className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                onChange={(e) => {
+                  setInputPassword(e.target.value);
+                }}
               />
               <button
                 className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white"
-                onClick={() => navigate("/")}
+                onClick={handleSubmit}
               >
                 Sign in
               </button>
