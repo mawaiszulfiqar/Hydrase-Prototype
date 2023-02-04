@@ -1,9 +1,8 @@
 import { ReactComponent as UnitIcon } from "../../assets/Maps/de-arena.svg";
 import { BsBook } from "react-icons/bs";
 import LevelButton from "../LevelButton/LevelButton";
-
 import { CACTUS_VALLEY_PATH } from "../../utils/MapPaths/CactusValley";
-import useUser from "../../hooks/useUserInfo";
+// import useUser from "../../hooks/useUserInfo";
 
 interface IUnitProps {
   UnitId: string;

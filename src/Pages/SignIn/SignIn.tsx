@@ -1,5 +1,4 @@
-import Cookies from "js-cookie";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { ReactComponent as HydraseLogo } from "../../assets/Graphics/hydrase-logo.svg";
 import useUserInfo from "../../hooks/useUserInfo";

@@ -59,6 +59,7 @@ const App = () => {
       setLoading(false);
       console.log("No access token found! Navigate to /login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
