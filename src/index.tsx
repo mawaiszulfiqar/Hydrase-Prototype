@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import Providers from "./components/Providers/ProvidersWrapper";
+// import Providers from "./components/Providers/ProvidersWrapper";
 import App from "./App";
+import { UserProvider } from "./contexts/User";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,9 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Providers>
+      <UserProvider>
         <App />
-      </Providers>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
