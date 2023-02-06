@@ -26,7 +26,7 @@
   "scripts": {
     "serve": "serve -s build",
     "start": "react-scripts start",
-    "build:digitalOcean": "react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
