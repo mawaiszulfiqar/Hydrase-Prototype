@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import Providers from "./components/Providers/Providers";
+import Providers from "./components/Providers/ProvidersWrapper";
 import App from "./App";
 
 const root = ReactDOM.createRoot(
