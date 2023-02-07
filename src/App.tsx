@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router";
-import Learn from "./pages/Learn/Learn";
-import SignIn from "./pages/SignIn/SignIn";
+import Learn from "./Pages/Learn/Learn";
+import SignIn from "./Pages/SignIn/SignIn";
 import { io } from "socket.io-client";
 import AuthGuard from "./guards/AuthGuard/AuthGuard";
 import AuthPageGuard from "./guards/AuthGuard/AuthPageGuard";
